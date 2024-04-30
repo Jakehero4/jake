@@ -21,6 +21,10 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column; /* Align elements vertically */
+            justify-content: center;
+            align-items: center;
         }
         .banner {
             max-width: 100%;
@@ -28,14 +32,25 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             background-color: transparent;
+            transition: transform 0.3s ease;
+        }
+        .banner:hover {
+            transform: scale(1.05); /* Increase size on hover */
         }
         .socials {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .socials a {
             text-decoration: none;
             color: #007bff;
             margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .socials a:hover {
+            transform: scale(1.2); /* Increase size on hover */
         }
     </style>
 </head>
