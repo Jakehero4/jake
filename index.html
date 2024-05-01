@@ -56,15 +56,26 @@
             font-family: 'Roboto Mono', monospace;
             margin-top: 10px;
         }
-        .notification {
+        .notification-container {
             position: fixed;
             top: 20px;
             right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .notification {
             background-color: #007bff;
             color: #fff;
             padding: 10px;
             border-radius: 8px;
-            display: none;
+            margin-left: 10px;
+        }
+        .notification-bar {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 5px 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
         .discord-button {
             cursor: pointer;
@@ -93,7 +104,10 @@
         </div>
     </div>
 
-    <div class="notification" id="notification">Discord Copied To Clipboard</div>
+    <div class="notification-container" id="notification-container">
+        <div class="notification-bar">Time Left:</div>
+        <div class="notification" id="notification">Discord Copied To Clipboard</div>
+    </div>
 
     <script>
         document.querySelector('.discord-button').addEventListener('mouseover', function() {
