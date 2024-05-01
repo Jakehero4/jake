@@ -71,6 +71,7 @@
             border-radius: 8px;
             margin-top: 5px;
             position: relative;
+            display: none; /* Hidden by default */
         }
         .notification-bar {
             position: absolute;
@@ -110,7 +111,7 @@
         <p>Hey there, I'm Jake. I love to code and create amazing projects!</p>
         <div class="socials">
             <a href="https://www.instagram.com/jakehero444/" target="_blank"><img src="instagram-logo.png" alt="Instagram Logo" width="40" height="40"></a>
-            <div class="discord-button"><img src="discord-logo.png" alt="Discord Logo" width="40" height="40"></div>
+            <div class="discord-button" id="discord-button"><img src="discord-logo.png" alt="Discord Logo" width="40" height="40"></div>
             <a href="https://github.com/Jakehero4" target="_blank"><img src="github-logo.png" alt="GitHub Logo" width="40" height="40"></a>
             <a href="mailto:jumpdog10@gmail.com" target="_blank"><img src="gmail-logo.png" alt="Gmail Logo" width="40" height="30"></a>
         </div>
@@ -122,15 +123,7 @@
     </div>
 
     <script>
-        document.querySelector('.discord-button').addEventListener('mouseover', function() {
-            this.querySelector('img').style.transform = 'scale(1.2)';
-        });
-
-        document.querySelector('.discord-button').addEventListener('mouseout', function() {
-            this.querySelector('img').style.transform = 'scale(1)';
-        });
-
-        document.querySelector('.discord-button').addEventListener('click', function() {
+        document.getElementById('discord-button').addEventListener('click', function() {
             var textToCopy = 'officialhampter';
             navigator.clipboard.writeText(textToCopy).then(function() {
                 document.getElementById('notification').style.display = 'block';
