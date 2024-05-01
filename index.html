@@ -19,6 +19,7 @@
             height: 100vh;
         }
         .container {
+            position: relative;
             width: 60%;
             max-width: 800px;
             padding: 20px;
@@ -57,12 +58,9 @@
             margin-top: 10px;
         }
         .notification-container {
-            position: fixed;
+            position: absolute;
             top: 20px;
             right: 20px;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
         }
         .notification {
             background-color: #007bff;
@@ -100,7 +98,7 @@
             transform: scale(1.2);
         }
         .discord-button img {
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
     </style>
 </head>
@@ -117,7 +115,9 @@
         </div>
     </div>
 
-    <div class="notification" id="notification">Discord Copied To Clipboard</div>
+    <div class="notification-container" id="notification-container">
+        <div class="notification" id="notification">Discord Copied To Clipboard</div>
+    </div>
 
     <script>
         document.getElementById('discord-button').addEventListener('click', function() {
