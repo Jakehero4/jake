@@ -70,19 +70,9 @@
             cursor: pointer;
             transition: transform 0.5s ease;
             display: inline-block;
-            animation-name: pulse;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-            animation-direction: alternate;
         }
-        @keyframes pulse {
-            from {
-                transform: scale(1);
-            }
-            to {
-                transform: scale(1.2);
-            }
+        .discord-button:hover img {
+            transform: scale(1.2);
         }
     </style>
 </head>
