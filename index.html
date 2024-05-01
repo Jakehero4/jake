@@ -74,6 +74,9 @@
         .discord-button:hover img {
             transform: scale(1.2);
         }
+        .discord-button img {
+            transition: transform 0.5s ease;
+        }
     </style>
 </head>
 <body>
@@ -92,6 +95,14 @@
     <div class="notification" id="notification">Discord Copied To Clipboard</div>
 
     <script>
+        document.querySelector('.discord-button').addEventListener('mouseover', function() {
+            this.querySelector('img').style.transform = 'scale(1.2)';
+        });
+
+        document.querySelector('.discord-button').addEventListener('mouseout', function() {
+            this.querySelector('img').style.transform = 'scale(1)';
+        });
+
         document.querySelector('.discord-button').addEventListener('click', function() {
             var textToCopy = 'officialhampter';
             navigator.clipboard.writeText(textToCopy).then(function() {
