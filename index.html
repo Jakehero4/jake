@@ -11,22 +11,23 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f0f0f0; /* Default background color */
+            transition: background-color 0.5s ease; /* Added transition for smooth mode switch */
         }
         .container {
             position: relative;
             width: 60%;
             max-width: 800px;
             padding: 20px;
-            background-color: #fff;
+            background-color: #fff; /* Default container background color */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transition: width 0.5s ease;
+            transition: width 0.5s ease, background-color 0.5s ease; /* Added background-color transition */
         }
         .banner {
             max-width: 100%;
@@ -98,7 +99,40 @@
             transform: scale(1.2);
         }
         .discord-button img {
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease; /* Added transition for smooth mode switch */
+        }
+
+        /* Added styles for dark mode */
+        .dark-mode-toggle {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+
+    /* Apply smooth hover animation for dark/light mode toggle button */
+    .dark-mode-toggle img {
+        transition: transform 0.5s ease;
+    }
+
+    .dark-mode-toggle:hover img {
+        transform: scale(1.1);
+    }
+
+        /* Apply dark mode effect */
+        body.dark-mode .dark-mode-toggle img,
+        body.dark-mode #github-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Apply smooth transition for GitHub icon */
+        #github-icon {
+            transition: filter 0.5s ease; /* Added transition for smooth filter change */
+        }
+
+        /* Apply smooth transition for dark mode icon */
+        #dark-mode-toggle img {
+            transition: filter 0.5s ease; /* Added transition for smooth filter change */
         }
     </style>
 </head>
@@ -110,7 +144,7 @@
         <div class="socials">
             <a href="https://www.instagram.com/jakehero444/" target="_blank"><img src="instagram-logo.png" alt="Instagram Logo" width="40" height="40"></a>
             <div class="discord-button" id="discord-button"><img src="discord-logo.png" alt="Discord Logo" width="40" height="40"></div>
-            <a href="https://github.com/Jakehero4" target="_blank"><img src="github-logo.png" alt="GitHub Logo" width="40" height="40"></a>
+            <a href="https://github.com/Jakehero4" target="_blank"><img src="github-logo.png" alt="GitHub Logo" id="github-icon" width="40" height="40"></a>
             <a href="mailto:jumpdog10@gmail.com" target="_blank"><img src="gmail-logo.png" alt="Gmail Logo" width="40" height="30"></a>
         </div>
     </div>
@@ -119,7 +153,29 @@
         <div class="notification" id="notification">Discord Copied To Clipboard</div>
     </div>
 
+    <!-- Dark mode toggle button -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <img src="darkmode-icon.png" alt="Dark Mode Toggle" width="40" height="40">
+    </div>
+
     <script>
+        // Dark mode toggle functionality
+        var darkModeEnabled = false;
+
+        document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+            darkModeEnabled = !darkModeEnabled;
+            if (darkModeEnabled) {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.container').style.backgroundColor = '#333'; // Change container background color to dark mode
+                document.body.style.backgroundColor = '#333'; // Change body background color to dark mode
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.querySelector('.container').style.backgroundColor = '#fff'; // Change container background color back to light mode
+                document.body.style.backgroundColor = '#f0f0f0'; // Change body background color back to light mode
+            }
+        });
+
+        // Copy to clipboard functionality
         document.getElementById('discord-button').addEventListener('click', function() {
             var textToCopy = 'officialhampter';
             navigator.clipboard.writeText(textToCopy).then(function() {
